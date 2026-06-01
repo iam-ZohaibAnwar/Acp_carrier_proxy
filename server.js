@@ -33,7 +33,6 @@ app.all('*', async (req, res) => {
   delete headers['content-length']
 
   try {
-    console.log(targetUrl.href)
     const upstream = await axios({
       method: req.method,
       url: targetUrl.href,

@@ -1,0 +1,9 @@
+name = "shipment-api-proxy"
+main = "worker.js"
+compatibility_date = "2024-08-01"
+
+# Optional: route to your zone (uncomment and set after `wrangler login`)
+# routes = [{ pattern = "proxy.yourdomain.com/*", zone_name = "yourdomain.com" }]
+
+[observability]
+enabled = true
