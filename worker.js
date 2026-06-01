@@ -38,7 +38,15 @@ export default {
     const url = new URL(request.url)
 
     if (url.pathname === '/health') {
-      return Response.json({ ok: true, service: 'shipment-api-proxy' })
+      return Response.json({ ok: true, service: 'falconhigh-proxy' })
+    }
+
+    if (url.pathname === '/' && request.method === 'GET' && !request.headers.get('x-target-host')) {
+      return Response.json({
+        service: 'forward-proxy',
+        health: '/health',
+        usage: 'Call this host with the same path as the API, and header X-target-host: <origin>'
+      })
     }
 
     const targetOrigin = request.headers.get('x-target-host')
